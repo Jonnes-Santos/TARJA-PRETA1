@@ -7,7 +7,7 @@ const Home = () => {
 
   // Buscar notícias
   useEffect(() => {
-    axios.get('http://localhost:3001/noticias')
+    axios.get('/.netlify/functions/getNoticias')
       .then(response => setNoticias(response.data))
       .catch(error => console.error(error));
   }, []);
