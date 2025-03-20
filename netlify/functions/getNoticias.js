@@ -8,10 +8,11 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 exports.handler = async (event, context) => {
   try {
-    // Busca as notícias na tabela "noticias" do Supabase
+    // Busca as notícias na tabela "noticias" do Supabase, ordenadas pela data de publicação (do mais recente para o mais antigo)
     const { data, error } = await supabase
       .from("noticias")
-      .select("*");
+      .select("*")
+      .order("data_publicacao", { ascending: false }); // Ordenação adicionada aqui
 
     if (error) {
       return {

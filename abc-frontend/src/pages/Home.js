@@ -26,7 +26,7 @@ const Home = () => {
       {/* Cabeçalho */}
       <header className="bg-black text-white py-8 shadow-lg">
         <div className="container mx-auto text-center max-w-9xl px-4">
-          <h1 className="text-4xl md:text-7xl font-bold font-mono">TARJA PRETA</h1>
+          <h1 className="text-4xl md:text-7xl font-bold font-sans">TARJA PRETA</h1>
           <p className="mt-2 text-sm md:text-lg text-gray-400">AS ÚLTIMAS NOTÍCIAS DO UNIVERSO GUETO</p>
         </div>
       </header>
