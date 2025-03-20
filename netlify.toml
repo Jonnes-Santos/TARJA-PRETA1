@@ -1,7 +1,7 @@
 [build]
-  base = "abc-frontend"
-  publish = "abc-frontend/build"
-  functions = "netlify/functions"
+  base = "abc-frontend"  # Pasta do frontend
+  publish = "build"      # Pasta de build do React (dentro de abc-frontend)
+  functions = "netlify/functions"  # Pasta das funções serverless
 
 [[redirects]]
   from = "/api/*"
