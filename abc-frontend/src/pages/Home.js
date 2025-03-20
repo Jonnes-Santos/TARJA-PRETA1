@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
-import Modal from 'react-modal';
-import NewsletterPopup from './NewsletterPopup';
 
 const Home = () => {
   const [noticias, setNoticias] = useState([]);
@@ -27,31 +22,25 @@ const Home = () => {
   const outrasNoticias = noticias.slice(3);
 
   return (
-    <div className="min-h-screen bg-white text-black font-sans">
-      {/* Cabeçalho com gradiente */}
-      <header className="bg-gradient-to-r from-black to-gray-900 text-white py-8 shadow-lg">
+    <div className="min-h-screen bg-black text-white font-sans">
+      {/* Cabeçalho */}
+      <header className="bg-black text-white py-8 shadow-lg">
         <div className="container mx-auto text-center max-w-9xl px-4">
           <h1 className="text-4xl md:text-7xl font-bold font-mono">TARJA PRETA</h1>
           <p className="mt-2 text-sm md:text-lg text-gray-400">AS ÚLTIMAS NOTÍCIAS DO UNIVERSO GUETO</p>
         </div>
       </header>
 
-      {/* Destaque Principal com Framer Motion */}
+      {/* Destaque Principal */}
       <section className="destaque-principal py-12">
         <div className="container mx-auto px-4 max-w-5xl">
           {noticiaPrincipal && (
-            <motion.article
-              className="noticia-destaque bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+            <article className="noticia-destaque bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
               <div className="relative h-100 overflow-hidden">
                 <img
                   src={noticiaPrincipal.imagem_url}
                   alt={noticiaPrincipal.titulo}
                   className="w-full h-full object-cover"
-                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
@@ -63,45 +52,34 @@ const Home = () => {
                   <p className="text-sm md:text-base text-gray-300">{noticiaPrincipal.resumo}</p>
                 </div>
               </div>
-            </motion.article>
+            </article>
           )}
         </div>
       </section>
 
-      {/* Sub-destaques com Swiper */}
+      {/* Sub-destaques */}
       <section className="sub-destaques py-12 bg-gray-800">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <Swiper
-            spaceBetween={30}
-            slidesPerView={1}
-            breakpoints={{
-              768: { slidesPerView: 2 },
-            }}
-          >
-            {subDestaques.map(noticia => (
-              <SwiperSlide key={noticia.id}>
-                <article className="sub-noticia bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-                  <div className="relative h-80 overflow-hidden">
-                    <img
-                      src={noticia.imagem_url}
-                      alt={noticia.titulo}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-4">
-                      <h3 className="text-lg md:text-xl font-bold mb-2">
-                        <Link to={`/noticia/${noticia.id}`} className="hover:text-blue-500">
-                          {noticia.titulo}
-                        </Link>
-                      </h3>
-                      <p className="text-sm md:text-base text-gray-300">{noticia.resumo}</p>
-                    </div>
-                  </div>
-                </article>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        <div className="container mx-auto px-4 max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8">
+          {subDestaques.map(noticia => (
+            <article key={noticia.id} className="sub-noticia bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+              <div className="relative h-80 overflow-hidden">
+                <img
+                  src={noticia.imagem_url}
+                  alt={noticia.titulo}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <h3 className="text-lg md:text-xl font-bold mb-2">
+                    <Link to={`/noticia/${noticia.id}`} className="hover:text-blue-500">
+                      {noticia.titulo}
+                    </Link>
+                  </h3>
+                  <p className="text-sm md:text-base text-gray-300">{noticia.resumo}</p>
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -111,19 +89,12 @@ const Home = () => {
           <h2 className="text-2xl font-bold mb-8">PRESCRIÇÃO PERIFÉRICA</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {outrasNoticias.map(noticia => (
-              <motion.article
-                key={noticia.id}
-                className="noticia bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
+              <article key={noticia.id} className="noticia bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={noticia.imagem_url}
                     alt={noticia.titulo}
                     className="w-full h-full object-cover"
-                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 </div>
@@ -135,7 +106,7 @@ const Home = () => {
                   </h3>
                   <p className="text-sm md:text-base text-gray-300">{noticia.resumo}</p>
                 </div>
-              </motion.article>
+              </article>
             ))}
           </div>
         </div>
@@ -172,33 +143,52 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Seção de Parceiros */}
-      <section className="parceiros py-12 bg-gray-100">
+      {/* Seção de Assinatura */}
+      <section className="assinatura py-12">
         <div className="container mx-auto px-4 max-w-7xl text-center">
-          <h2 className="text-2xl font-bold mb-8">NOSSOS PARCEIROS</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <img src="/images/logo001.png" alt="Parceiro 1" className="w-32 h-32 object-contain" />
-            <img src="/images/logo002.png" alt="Parceiro 2" className="w-32 h-32 object-contain" />
-            <img src="/images/logo003.png" alt="Parceiro 3" className="w-32 h-32 object-contain" />
-            <img src="/images/logo004.png" alt="Parceiro 4" className="w-32 h-32 object-contain" />
-          </div>
+          <h2 className="text-2xl font-bold mb-4">Receba as últimas notícias no seu e-mail</h2>
+          <form className="form-assinatura flex justify-center">
+            <input
+              type="email"
+              placeholder="Seu e-mail"
+              className="p-2 rounded-l-lg bg-gray-700 text-white focus:outline-none"
+              required
+            />
+            <button
+              type="submit"
+              className="bg-blue-500 text-white p-2 rounded-r-lg hover:bg-blue-600"
+            >
+              Assinar
+            </button>
+          </form>
         </div>
       </section>
 
       {/* Rodapé */}
-      <footer className="bg-black text-white py-8">
+      <footer className="bg-white text-black py-8">
         <div className="container mx-auto px-4 max-w-7xl text-center">
           <p className="text-lg">© 2025 TARJA PRETA. Todos os direitos reservados. Por @john1santoz</p>
-          <div className="flex justify-center space-x-4 mt-4">
-            <a href="https://instagram.com" className="hover:text-blue-500">Instagram</a>
-            <a href="https://youtube.com" className="hover:text-blue-500">YouTube</a>
-            <a href="https://twitter.com" className="hover:text-blue-500">Twitter</a>
-          </div>
+          <nav className="mt-4">
+            <ul className="flex justify-center space-x-4">
+              <li>
+                <a href="/politica-de-privacidade" className="hover:text-blue-500">
+                  Política de Privacidade
+                </a>
+              </li>
+              <li>
+                <a href="/termos-de-uso" className="hover:text-blue-500">
+                  Termos de Uso
+                </a>
+              </li>
+              <li>
+                <a href="/contato" className="hover:text-blue-500">
+                  Contato
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </footer>
-
-      {/* Pop-up de Newsletter */}
-      <NewsletterPopup />
     </div>
   );
 };
