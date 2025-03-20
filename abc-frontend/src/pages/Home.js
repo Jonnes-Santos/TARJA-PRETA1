@@ -120,7 +120,7 @@ const Home = () => {
             <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
               <h3 className="text-xl font-bold mb-4 p-4">A286 - Lei da Semeadura</h3>
               <iframe
-                src="https://youtu.be/rTigTqb3G4g?si=uzMrwqFh7KWKbpI3"
+                src="https://www.youtube.com/embed/rTigTqb3G4g"
                 className="w-full h-64"
                 title="YouTube video player"
                 frameBorder="0"
@@ -131,7 +131,7 @@ const Home = () => {
             <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
               <h3 className="text-xl font-bold mb-4 p-4">A286 Ft Cassino ZL - All in</h3>
               <iframe
-                src="https://youtu.be/ondsAhPadls?si=TQ_Ji5vz-ItHRe7o"
+                src="https://www.youtube.com/embed/ondsAhPadls"
                 className="w-full h-64"
                 title="YouTube video player"
                 frameBorder="0"
@@ -170,9 +170,21 @@ const Home = () => {
           <p className="text-lg">© 2025 TARJA PRETA. Todos os direitos reservados. Por @john1santoz</p>
           <nav className="mt-4">
             <ul className="flex justify-center space-x-4">
-              <li><a href="#" className="hover:text-blue-500">Política de Privacidade</a></li>
-              <li><a href="#" className="hover:text-blue-500">Termos de Uso</a></li>
-              <li><a href="#" className="hover:text-blue-500">Contato</a></li>
+              <li>
+                <a href="/politica-de-privacidade" className="hover:text-blue-500">
+                  Política de Privacidade
+                </a>
+              </li>
+              <li>
+                <a href="/termos-de-uso" className="hover:text-blue-500">
+                  Termos de Uso
+                </a>
+              </li>
+              <li>
+                <a href="/contato" className="hover:text-blue-500">
+                  Contato
+                </a>
+              </li>
             </ul>
           </nav>
         </div>

@@ -61,9 +61,21 @@ const Noticia = () => {
           <p className="text-lg">© 2025 TARJA PRETA. Todos os direitos reservados. Por @john1santoz</p>
           <nav className="mt-4">
             <ul className="flex justify-center space-x-4">
-              <li><a href="#" className="hover:text-blue-500">Política de Privacidade</a></li>
-              <li><a href="#" className="hover:text-blue-500">Termos de Uso</a></li>
-              <li><a href="#" className="hover:text-blue-500">Contato</a></li>
+              <li>
+                <a href="/politica-de-privacidade" className="hover:text-blue-500">
+                  Política de Privacidade
+                </a>
+              </li>
+              <li>
+                <a href="/termos-de-uso" className="hover:text-blue-500">
+                  Termos de Uso
+                </a>
+              </li>
+              <li>
+                <a href="/contato" className="hover:text-blue-500">
+                  Contato
+                </a>
+              </li>
             </ul>
           </nav>
         </div>
