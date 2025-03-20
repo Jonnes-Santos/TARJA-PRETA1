@@ -8,7 +8,7 @@ const Noticia = () => {
 
   // Buscar notícia pelo ID
   useEffect(() => {
-    axios.get(`http://localhost:3001/noticias/${id}`)
+    axios.get(`/.netlify/functions/getNoticiaById?id=${id}`)
       .then(response => setNoticia(response.data))
       .catch(error => console.error(error));
   }, [id]);
