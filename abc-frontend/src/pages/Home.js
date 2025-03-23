@@ -31,7 +31,10 @@ const Home = () => {
   const subDestaques = noticias.slice(1, 3);
 
   // Demais notícias (a partir da quarta notícia)
-  const outrasNoticias = noticias.slice(3);
+  const outrasNoticias = noticias.slice(3, 6); // Ajustado para evitar sobreposição
+
+  // Notícias em Destaque (a partir da sétima notícia)
+  const noticiasDestaque = noticias.slice(6, 12); // Pega as notícias de 7 a 12
 
   // Função para renderizar uma notícia
   const renderNoticia = (noticia, isPrincipal = false, isSubDestaque = false) => (
@@ -122,20 +125,20 @@ const Home = () => {
 
       {/* Seção de Notícias em Texto */}
       <section className="noticias-texto py-12 bg-gray-800">
-  <div className="container mx-auto px-4 max-w-7xl">
-    <h2 className="text-2xl font-bold mb-8">NOTÍCIAS EM DESTAQUE</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {noticiasDestaque.map(noticia => (
-        <div key={noticia.id} className="bg-gray-900 rounded-lg shadow-2xl p-6 transform transition-transform hover:scale-105">
-          <Link to={`/noticia/${noticia.id}`} className="hover:text-blue-500">
-            <h3 className="text-lg md:text-xl font-bold mb-2">{noticia.titulo}</h3>
-            <p className="text-sm md:text-base text-gray-300">{noticia.resumo}</p>
-          </Link>
+        <div className="container mx-auto px-4 max-w-7xl">
+          <h2 className="text-2xl font-bold mb-8">NOTÍCIAS EM DESTAQUE</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {noticiasDestaque.map(noticia => (
+              <div key={noticia.id} className="bg-gray-900 rounded-lg shadow-2xl p-6 transform transition-transform hover:scale-105">
+                <Link to={`/noticia/${noticia.id}`} className="hover:text-blue-500">
+                  <h3 className="text-lg md:text-xl font-bold mb-2">{noticia.titulo}</h3>
+                  <p className="text-sm md:text-base text-gray-300">{noticia.resumo}</p>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Seção de Vídeos do YouTube */}
       <section className="videos py-12">
