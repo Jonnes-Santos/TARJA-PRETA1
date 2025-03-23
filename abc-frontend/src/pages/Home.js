@@ -34,8 +34,8 @@ const Home = () => {
   const outrasNoticias = noticias.slice(3);
 
   // Função para renderizar uma notícia
-  const renderNoticia = (noticia, isPrincipal = false) => (
-    <article className={`${isPrincipal ? 'noticia-destaque' : 'sub-noticia'} bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105`}>
+  const renderNoticia = (noticia, isPrincipal = false, isSubDestaque = false) => (
+    <article className={`${isPrincipal || isSubDestaque ? 'noticia-destaque' : 'noticia-comum'} bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105`}>
       <div className={`relative ${isPrincipal ? 'h-96' : 'h-64'} overflow-hidden`}>
         <img
           src={noticia.imagem_url}
@@ -43,16 +43,30 @@ const Home = () => {
           className="w-full h-full object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-        <div className={`absolute bottom-0 left-0 right-0 ${isPrincipal ? 'p-6' : 'p-4'}`}>
-          <h2 className={`${isPrincipal ? 'text-2xl md:text-4xl' : 'text-lg md:text-xl'} font-bold mb-2`}>
+        {(isPrincipal || isSubDestaque) && (
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+        )}
+        {(isPrincipal || isSubDestaque) && (
+          <div className={`absolute bottom-0 left-0 right-0 ${isPrincipal ? 'p-6' : 'p-4'}`}>
+            <h2 className={`${isPrincipal ? 'text-2xl md:text-4xl' : 'text-lg md:text-xl'} font-bold mb-2`}>
+              <Link to={`/noticia/${noticia.id}`} className="hover:text-blue-500">
+                {noticia.titulo}
+              </Link>
+            </h2>
+            <p className="text-sm md:text-base text-gray-300">{noticia.resumo}</p>
+          </div>
+        )}
+      </div>
+      {!isPrincipal && !isSubDestaque && (
+        <div className="p-4">
+          <h2 className="text-lg md:text-xl font-bold mb-2">
             <Link to={`/noticia/${noticia.id}`} className="hover:text-blue-500">
               {noticia.titulo}
             </Link>
           </h2>
           <p className="text-sm md:text-base text-gray-300">{noticia.resumo}</p>
         </div>
-      </div>
+      )}
     </article>
   );
 
@@ -86,7 +100,7 @@ const Home = () => {
         <div className="container mx-auto px-4 max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8">
           {subDestaques.map(noticia => (
             <React.Fragment key={noticia.id}>
-              {renderNoticia(noticia)}
+              {renderNoticia(noticia, false, true)}
             </React.Fragment>
           ))}
         </div>
