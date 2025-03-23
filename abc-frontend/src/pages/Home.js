@@ -246,17 +246,16 @@ const Home = () => {
           >
             <SwiperSlide>
               <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-                <a href="https://open.spotify.com/track/..." target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="https://open.spotify.com/intl-pt/track/6m8AgjfI28ER6odzMxmHtR?si=425748e85baf4dee"
-                    alt="Capa do Álbum"
-                    className="w-full h-64 object-cover"
-                  />
-                  <div className="p-4">
-                    <h3 className="text-xl font-bold mb-2">Nome da Música</h3>
-                    <p className="text-sm text-gray-300">Artista</p>
-                  </div>
-                </a>
+                <iframe
+                  style={{ borderRadius: '12px' }}
+                  src="https://open.spotify.com/embed/track/6m8AgjfI28ER6odzMxmHtR?utm_source=generator"
+                  width="100%"
+                  height="352"
+                  frameBorder="0"
+                  allowFullScreen
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                ></iframe>
               </div>
             </SwiperSlide>
             {/* Adicione mais músicas aqui */}
