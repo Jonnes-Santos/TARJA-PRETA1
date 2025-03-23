@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js'; // Importa o Supabase diretamente
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 // Importações do Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -8,47 +8,29 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-// Configuração do Supabase
-const supabaseUrl = process.env.REACT_APP_SUPABASE_URL; // Use variáveis de ambiente
-const supabaseKey = process.env.REACT_APP_SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
-
 const Home = () => {
   const [noticias, setNoticias] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Buscar notícias do Supabase
+  // Buscar notícias
   useEffect(() => {
-    const fetchNoticias = async () => {
-      try {
-        // Busca as notícias ordenadas por data (última notícia primeiro)
-        const { data, error } = await supabase
-          .from('noticias') // Substitua 'noticias' pelo nome da sua tabela
-          .select('*')
-          .order('data_publicacao', { ascending: false }); // Ordena por data decrescente
-
-        if (error) {
-          throw error;
-        }
-
-        if (data) {
-          setNoticias(data);
+    axios.get('/.netlify/functions/getNoticias')
+      .then(response => {
+        if (response.data && Array.isArray(response.data)) {
+          setNoticias(response.data);
         } else {
-          setError("Nenhuma notícia encontrada.");
+          setError("Dados inválidos recebidos da API.");
         }
-      } catch (error) {
+      })
+      .catch(error => {
         console.error("Erro ao buscar notícias:", error);
         setError("Erro ao carregar notícias. Tente novamente mais tarde.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNoticias();
+      })
+      .finally(() => setLoading(false));
   }, []);
 
-  // Notícia principal (última notícia da lista)
+  // Notícia principal (primeira notícia da lista)
   const noticiaPrincipal = noticias.length > 0 ? noticias[0] : null;
 
   // Sub-destaques (próximas duas notícias)
