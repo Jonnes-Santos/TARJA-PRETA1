@@ -36,7 +36,7 @@ const Home = () => {
   // Função para renderizar uma notícia
   const renderNoticia = (noticia, isPrincipal = false, isSubDestaque = false) => (
     <article className={`${isPrincipal || isSubDestaque ? 'noticia-destaque' : 'noticia-comum'} bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105`}>
-      <div className={`relative ${isPrincipal ? 'h-96' : 'h-64'} overflow-hidden`}>
+      <div className={`relative ${isPrincipal || isSubDestaque ? 'h-96' : 'h-64'} overflow-hidden`}>
         <img
           src={noticia.imagem_url}
           alt={noticia.titulo}
@@ -120,11 +120,28 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Seção de Vídeos */}
-      <section className="videos py-12 bg-gray-800">
+      {/* Seção de Notícias em Texto */}
+      <section className="noticias-texto py-12 bg-gray-800">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <h2 className="text-2xl font-bold mb-8">NOTÍCIAS EM DESTAQUE</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {noticias.slice(0, 6).map(noticia => (
+              <div key={noticia.id} className="bg-gray-900 rounded-lg shadow-2xl p-6 transform transition-transform hover:scale-105">
+                <Link to={`/noticia/${noticia.id}`} className="hover:text-blue-500">
+                  <h3 className="text-lg md:text-xl font-bold mb-2">{noticia.titulo}</h3>
+                  <p className="text-sm md:text-base text-gray-300">{noticia.resumo}</p>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Seção de Vídeos do YouTube */}
+      <section className="videos py-12">
         <div className="container mx-auto px-4 max-w-7xl">
           <h2 className="text-2xl font-bold mb-8">LANÇAMENTOS DO YOUTUBE</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
               <h3 className="text-xl font-bold mb-4 p-4">A286 - Lei da Semeadura</h3>
               <iframe
@@ -147,6 +164,30 @@ const Home = () => {
                 allowFullScreen
               ></iframe>
             </div>
+            {/* Adicione mais vídeos aqui */}
+          </div>
+        </div>
+      </section>
+
+      {/* Seção de Músicas e Lançamentos do Spotify */}
+      <section className="musicas py-12 bg-gray-800">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <h2 className="text-2xl font-bold mb-8">LANÇAMENTOS DO SPOTIFY</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+              <a href="https://open.spotify.com/track/..." target="_blank" rel="noopener noreferrer">
+                <img
+                  src="https://i.scdn.co/image/..."
+                  alt="Capa do Álbum"
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-bold mb-2">Nome da Música</h3>
+                  <p className="text-sm text-gray-300">Artista</p>
+                </div>
+              </a>
+            </div>
+            {/* Adicione mais músicas aqui */}
           </div>
         </div>
       </section>
