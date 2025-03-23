@@ -164,7 +164,6 @@ const Home = () => {
                 allowFullScreen
               ></iframe>
             </div>
-            {/* Adicione mais vídeos aqui */}
             <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
               <h3 className="text-xl font-bold mb-4 p-4">Mv Bill - Imorrível [Prod. DJ Caique]</h3>
               <iframe
