@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { supabase } from './supabaseClient'; // Importe o cliente do Supabase
 import { Link } from 'react-router-dom';
 // Importações do Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -13,24 +13,37 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Buscar notícias
+  // Buscar notícias do Supabase
   useEffect(() => {
-    axios.get('/.netlify/functions/getNoticias')
-      .then(response => {
-        if (response.data && Array.isArray(response.data)) {
-          setNoticias(response.data);
-        } else {
-          setError("Dados inválidos recebidos da API.");
+    const fetchNoticias = async () => {
+      try {
+        // Busca as notícias ordenadas por data (última notícia primeiro)
+        const { data, error } = await supabase
+          .from('noticias') // Substitua 'noticias' pelo nome da sua tabela
+          .select('*')
+          .order('data_publicacao', { ascending: false }); // Ordena por data decrescente
+
+        if (error) {
+          throw error;
         }
-      })
-      .catch(error => {
+
+        if (data) {
+          setNoticias(data);
+        } else {
+          setError("Nenhuma notícia encontrada.");
+        }
+      } catch (error) {
         console.error("Erro ao buscar notícias:", error);
         setError("Erro ao carregar notícias. Tente novamente mais tarde.");
-      })
-      .finally(() => setLoading(false));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNoticias();
   }, []);
 
-  // Notícia principal (primeira notícia da lista)
+  // Notícia principal (última notícia da lista)
   const noticiaPrincipal = noticias.length > 0 ? noticias[0] : null;
 
   // Sub-destaques (próximas duas notícias)
