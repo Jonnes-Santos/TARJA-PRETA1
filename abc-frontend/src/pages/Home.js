@@ -4,12 +4,24 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [noticias, setNoticias] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // Buscar notícias
   useEffect(() => {
     axios.get('/.netlify/functions/getNoticias')
-      .then(response => setNoticias(response.data))
-      .catch(error => console.error(error));
+      .then(response => {
+        if (response.data && Array.isArray(response.data)) {
+          setNoticias(response.data);
+        } else {
+          setError("Dados inválidos recebidos da API.");
+        }
+      })
+      .catch(error => {
+        console.error("Erro ao buscar notícias:", error);
+        setError("Erro ao carregar notícias. Tente novamente mais tarde.");
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   // Notícia principal (primeira notícia da lista)
@@ -20,6 +32,37 @@ const Home = () => {
 
   // Demais notícias (a partir da quarta notícia)
   const outrasNoticias = noticias.slice(3);
+
+  // Função para renderizar uma notícia
+  const renderNoticia = (noticia, isPrincipal = false) => (
+    <article className={`${isPrincipal ? 'noticia-destaque' : 'sub-noticia'} bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105`}>
+      <div className="relative h-100 overflow-hidden">
+        <img
+          src={noticia.imagem_url}
+          alt={noticia.titulo}
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+        <div className={`absolute bottom-0 left-0 right-0 ${isPrincipal ? 'p-4 md:p-6' : 'p-4'}`}>
+          <h2 className={`${isPrincipal ? 'text-xl md:text-3xl' : 'text-lg md:text-xl'} font-bold mb-2`}>
+            <Link to={`/noticia/${noticia.id}`} className="hover:text-blue-500">
+              {noticia.titulo}
+            </Link>
+          </h2>
+          <p className="text-sm md:text-base text-gray-300">{noticia.resumo}</p>
+        </div>
+      </div>
+    </article>
+  );
+
+  if (loading) {
+    return <div className="min-h-screen bg-black text-white flex justify-center items-center">Carregando...</div>;
+  }
+
+  if (error) {
+    return <div className="min-h-screen bg-black text-white flex justify-center items-center">{error}</div>;
+  }
 
   return (
     <div className="min-h-screen bg-black text-white font-sans">
@@ -34,26 +77,7 @@ const Home = () => {
       {/* Destaque Principal */}
       <section className="destaque-principal py-12">
         <div className="container mx-auto px-4 max-w-5xl">
-          {noticiaPrincipal && (
-            <article className="noticia-destaque bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-              <div className="relative h-100 overflow-hidden">
-                <img
-                  src={noticiaPrincipal.imagem_url}
-                  alt={noticiaPrincipal.titulo}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
-                  <h2 className="text-xl md:text-3xl font-bold mb-2 md:mb-4">
-                    <Link to={`/noticia/${noticiaPrincipal.id}`} className="hover:text-blue-500">
-                      {noticiaPrincipal.titulo}
-                    </Link>
-                  </h2>
-                  <p className="text-sm md:text-base text-gray-300">{noticiaPrincipal.resumo}</p>
-                </div>
-              </div>
-            </article>
-          )}
+          {noticiaPrincipal && renderNoticia(noticiaPrincipal, true)}
         </div>
       </section>
 
@@ -61,24 +85,9 @@ const Home = () => {
       <section className="sub-destaques py-12 bg-gray-800">
         <div className="container mx-auto px-4 max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8">
           {subDestaques.map(noticia => (
-            <article key={noticia.id} className="sub-noticia bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-              <div className="relative h-80 overflow-hidden">
-                <img
-                  src={noticia.imagem_url}
-                  alt={noticia.titulo}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <h3 className="text-lg md:text-xl font-bold mb-2">
-                    <Link to={`/noticia/${noticia.id}`} className="hover:text-blue-500">
-                      {noticia.titulo}
-                    </Link>
-                  </h3>
-                  <p className="text-sm md:text-base text-gray-300">{noticia.resumo}</p>
-                </div>
-              </div>
-            </article>
+            <React.Fragment key={noticia.id}>
+              {renderNoticia(noticia)}
+            </React.Fragment>
           ))}
         </div>
       </section>
@@ -89,24 +98,9 @@ const Home = () => {
           <h2 className="text-2xl font-bold mb-8">PRESCRIÇÃO PERIFÉRICA</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {outrasNoticias.map(noticia => (
-              <article key={noticia.id} className="noticia bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={noticia.imagem_url}
-                    alt={noticia.titulo}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                </div>
-                <div className="p-4">
-                  <h3 className="text-lg md:text-xl font-bold mb-2">
-                    <Link to={`/noticia/${noticia.id}`} className="hover:text-blue-500">
-                      {noticia.titulo}
-                    </Link>
-                  </h3>
-                  <p className="text-sm md:text-base text-gray-300">{noticia.resumo}</p>
-                </div>
-              </article>
+              <React.Fragment key={noticia.id}>
+                {renderNoticia(noticia)}
+              </React.Fragment>
             ))}
           </div>
         </div>
@@ -153,10 +147,12 @@ const Home = () => {
               placeholder="Seu e-mail"
               className="p-2 rounded-l-lg bg-gray-700 text-white focus:outline-none"
               required
+              aria-label="Insira seu e-mail para assinar"
             />
             <button
               type="submit"
               className="bg-blue-500 text-white p-2 rounded-r-lg hover:bg-blue-600"
+              aria-label="Assinar newsletter"
             >
               Assinar
             </button>
