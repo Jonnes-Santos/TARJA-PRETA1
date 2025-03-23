@@ -179,7 +179,7 @@ const Home = () => {
                 <iframe
                   src="https://www.youtube.com/embed/rTigTqb3G4g"
                   className="w-full h-64"
-                  title="YouTube video player"
+                  title="YouTube video player - A286 - Lei da Semeadura"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -192,39 +192,14 @@ const Home = () => {
                 <iframe
                   src="https://www.youtube.com/embed/ondsAhPadls"
                   className="w-full h-64"
-                  title="YouTube video player"
+                  title="YouTube video player - A286 Ft Cassino ZL - All in"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
               </div>
             </SwiperSlide>
-            <SwiperSlide>
-              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-                <h3 className="text-xl font-bold mb-4 p-4">Mv Bill - Imorrível [Prod. DJ Caique]</h3>
-                <iframe
-                  src="https://www.youtube.com/embed/IrLfQQcC8NA"
-                  className="w-full h-64"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-                <h3 className="text-xl font-bold mb-4 p-4">Gunplay - Bible On The Dash [Music Video]</h3>
-                <iframe
-                  src="https://www.youtube.com/embed/pOys4uYn-b0"
-                  className="w-full h-64"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </SwiperSlide>
+            {/* Adicione mais vídeos aqui */}
           </Swiper>
         </div>
       </section>
@@ -255,6 +230,7 @@ const Home = () => {
                   allowFullScreen
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"
+                  title="Spotify Embed - Música Exemplo"
                 ></iframe>
               </div>
             </SwiperSlide>
