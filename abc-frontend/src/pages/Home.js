@@ -34,10 +34,10 @@ const Home = () => {
   const noticiaPrincipal = noticias.length > 0 ? noticias[0] : null;
 
   // Sub-destaques (próximas duas notícias)
-  const subDestaques = noticias.slice(1, 6);
+  const subDestaques = noticias.slice(1, 3);
 
   // Demais notícias (a partir da quarta notícia)
-  const outrasNoticias = noticias.slice(6, 9);
+  const outrasNoticias = noticias.slice(3, 9);
 
   // Notícias em Destaque (a partir da sétima notícia)
   const noticiasDestaque = noticias.slice(9, 24);
