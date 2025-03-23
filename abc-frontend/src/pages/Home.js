@@ -80,7 +80,7 @@ const Home = () => {
   );
 
   if (loading) {
-    return <div className="min-h-screen bg-black text-white flex justify-center items-center">Carregando...</div>;
+    return <div className="min-h-screen bg-black text-white flex justify-center items-center">Por favor, aguarde. Carregando...</div>;
   }
 
   if (error) {
