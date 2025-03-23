@@ -4,59 +4,23 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [noticias, setNoticias] = useState([]);
-  const [noticiasTitulos, setNoticiasTitulos] = useState([]);
-  const [musicasSpotify, setMusicasSpotify] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   // Buscar notícias
   useEffect(() => {
-    const fetchNoticias = async () => {
-      try {
-        const response = await axios.get('/.netlify/functions/getNoticias');
+    axios.get('/.netlify/functions/getNoticias')
+      .then(response => {
         if (response.data && Array.isArray(response.data)) {
           setNoticias(response.data);
         } else {
           setError("Dados inválidos recebidos da API.");
         }
-      } catch (error) {
+      })
+      .catch(error => {
         console.error("Erro ao buscar notícias:", error);
         setError("Erro ao carregar notícias. Tente novamente mais tarde.");
-      }
-    };
-
-    // Buscar notícias apenas com títulos
-    const fetchNoticiasTitulos = async () => {
-      try {
-        const response = await axios.get('/.netlify/functions/getNoticiasTitulos');
-        if (response.data && Array.isArray(response.data)) {
-          setNoticiasTitulos(response.data);
-        } else {
-          setError("Dados inválidos recebidos da API.");
-        }
-      } catch (error) {
-        console.error("Erro ao buscar notícias apenas com títulos:", error);
-        setError("Erro ao carregar notícias. Tente novamente mais tarde.");
-      }
-    };
-
-    // Buscar músicas do Spotify
-    const fetchMusicasSpotify = async () => {
-      try {
-        const response = await axios.get('/.netlify/functions/getMusicasSpotify');
-        if (response.data && Array.isArray(response.data)) {
-          setMusicasSpotify(response.data);
-        } else {
-          setError("Dados inválidos recebidos da API.");
-        }
-      } catch (error) {
-        console.error("Erro ao buscar músicas do Spotify:", error);
-        setError("Erro ao carregar músicas. Tente novamente mais tarde.");
-      }
-    };
-
-    // Executar todas as requisições
-    Promise.all([fetchNoticias(), fetchNoticiasTitulos(), fetchMusicasSpotify()])
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -161,10 +125,11 @@ const Home = () => {
         <div className="container mx-auto px-4 max-w-7xl">
           <h2 className="text-2xl font-bold mb-8">NOTÍCIAS EM DESTAQUE</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {noticiasTitulos.map(noticia => (
+            {noticias.slice(0, 6).map(noticia => (
               <div key={noticia.id} className="bg-gray-900 rounded-lg shadow-2xl p-6 transform transition-transform hover:scale-105">
                 <Link to={`/noticia/${noticia.id}`} className="hover:text-blue-500">
                   <h3 className="text-lg md:text-xl font-bold mb-2">{noticia.titulo}</h3>
+                  <p className="text-sm md:text-base text-gray-300">{noticia.resumo}</p>
                 </Link>
               </div>
             ))}
@@ -200,6 +165,28 @@ const Home = () => {
               ></iframe>
             </div>
             {/* Adicione mais vídeos aqui */}
+            <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+              <h3 className="text-xl font-bold mb-4 p-4">Mv Bill - Imorrível [Prod. DJ Caique]</h3>
+              <iframe
+                src="https://www.youtube.com/embed/IrLfQQcC8NA"
+                className="w-full h-64"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+              <h3 className="text-xl font-bold mb-4 p-4">Gunplay - Bible On The Dash [Music Video]</h3>
+              <iframe
+                src="https://www.youtube.com/embed/pOys4uYn-b0"
+                className="w-full h-64"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
         </div>
       </section>
@@ -209,21 +196,20 @@ const Home = () => {
         <div className="container mx-auto px-4 max-w-7xl">
           <h2 className="text-2xl font-bold mb-8">LANÇAMENTOS DO SPOTIFY</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {musicasSpotify.map(musica => (
-              <div key={musica.id} className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-                <a href={musica.link} target="_blank" rel="noopener noreferrer">
-                  <img
-                    src={musica.imagem_url}
-                    alt={musica.titulo}
-                    className="w-full h-64 object-cover"
-                  />
-                  <div className="p-4">
-                    <h3 className="text-xl font-bold mb-2">{musica.titulo}</h3>
-                    <p className="text-sm text-gray-300">{musica.artista}</p>
-                  </div>
-                </a>
-              </div>
-            ))}
+            <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+              <a href="https://open.spotify.com/track/..." target="_blank" rel="noopener noreferrer">
+                <img
+                  src="https://i.scdn.co/image/..."
+                  alt="Capa do Álbum"
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-bold mb-2">Nome da Música</h3>
+                  <p className="text-sm text-gray-300">Artista</p>
+                </div>
+              </a>
+            </div>
+            {/* Adicione mais músicas aqui */}
           </div>
         </div>
       </section>
