@@ -34,13 +34,13 @@ const Home = () => {
   const noticiaPrincipal = noticias.length > 0 ? noticias[0] : null;
 
   // Sub-destaques (próximas duas notícias)
-  const subDestaques = noticias.slice(1, 3);
+  const subDestaques = noticias.slice(1, 6);
 
   // Demais notícias (a partir da quarta notícia)
-  const outrasNoticias = noticias.slice(3, 6);
+  const outrasNoticias = noticias.slice(6, 9);
 
   // Notícias em Destaque (a partir da sétima notícia)
-  const noticiasDestaque = noticias.slice(6, 12);
+  const noticiasDestaque = noticias.slice(9, 24);
 
   // Função para renderizar uma notícia
   const renderNoticia = (noticia, isPrincipal = false, isSubDestaque = false) => (
