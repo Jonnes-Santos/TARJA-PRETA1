@@ -93,7 +93,7 @@ const Home = () => {
       <header className="bg-black text-white py-8 shadow-lg">
         <div className="container mx-auto text-center max-w-9xl px-4">
           <h1 className="text-4xl md:text-7xl font-bold font-mono">TARJA PRETA</h1>
-          <p className="mt-2 text-sm md:text-lg text-gray-400">AS ÚLTIMAS NOTÍCIAS DO UNIVERSO GUETO</p>
+          <p className="mt-2 text-sm md:text-lg text-gray-400">CONTEÚDO PERIFÉRICO DO UNIVERSO GUETO</p>
         </div>
       </header>
 
@@ -132,7 +132,7 @@ const Home = () => {
       {/* Seção de Notícias em Texto (Carrossel) */}
       <section className="noticias-texto py-12 bg-gray-800">
         <div className="container mx-auto px-4 max-w-7xl">
-          <h2 className="text-2xl font-bold mb-8">NOTÍCIAS EM DESTAQUE</h2>
+          <h2 className="text-2xl font-bold mb-8">ÚLTIMAS NOTÍCIAS</h2>
           <Swiper
             modules={[Navigation, Pagination]}
             spaceBetween={20}
@@ -161,7 +161,7 @@ const Home = () => {
       {/* Seção de Vídeos do YouTube (Carrossel) */}
       <section className="videos py-12">
         <div className="container mx-auto px-4 max-w-7xl">
-          <h2 className="text-2xl font-bold mb-8">LANÇAMENTOS DO YOUTUBE</h2>
+          <h2 className="text-2xl font-bold mb-8">AS PESADAS DO YOUTUBE</h2>
           <Swiper
             modules={[Navigation, Pagination]}
             spaceBetween={20}
@@ -199,6 +199,46 @@ const Home = () => {
                 ></iframe>
               </div>
             </SwiperSlide>
+            <SwiperSlide>
+              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <h3 className="text-xl font-bold mb-4 p-4">Gunplay - Bible On The Dash [Music Video]</h3>
+                <iframe
+                  src="https://www.youtube.com/embed/pOys4uYn-b0"
+                  className="w-full h-64"
+                  title="YouTube video player - Gunplay - Bible On The Dash [Music Video]"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <h3 className="text-xl font-bold mb-4 p-4">Gunplay - Mask On ( Official Video )</h3>
+                <iframe
+                  src="https://www.youtube.com/embed/nQIe9E_MZTA"
+                  className="w-full h-64"
+                  title="YouTube video player - Gunplay - Bible On The Dash [Music Video]"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <h3 className="text-xl font-bold mb-4 p-4">Tony Yayo - Bullets Whistle</h3>
+                <iframe
+                  src="https://www.youtube.com/embed/tT-1VflZpaI"
+                  className="w-full h-64"
+                  title="YouTube video player - Gunplay - Bible On The Dash [Music Video]"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </SwiperSlide>
+
             {/* Adicione mais vídeos aqui */}
           </Swiper>
         </div>
@@ -207,7 +247,7 @@ const Home = () => {
       {/* Seção de Músicas e Lançamentos do Spotify (Carrossel) */}
       <section className="musicas py-12 bg-gray-800">
         <div className="container mx-auto px-4 max-w-7xl">
-          <h2 className="text-2xl font-bold mb-8">LANÇAMENTOS DO SPOTIFY</h2>
+          <h2 className="text-2xl font-bold mb-8">FAVORITAS DO SPOTIFY</h2>
           <Swiper
             modules={[Navigation, Pagination]}
             spaceBetween={20}
@@ -232,6 +272,46 @@ const Home = () => {
                   loading="lazy"
                   title="Spotify Embed - Música Exemplo"
                 ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <iframe style="border-radius:12px" 
+                src="https://open.spotify.com/embed/track/7xvBJ8GAoTK6umIFo4NSPP?utm_source=generator" 
+                width="100%" 
+                height="352"
+                 frameBorder="0" 
+                 allowfullscreen="" 
+                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                 loading="lazy"
+                 title="Spotify Embed - Música Exemplo"
+                 ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+              <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/00r6nDK0negul3eOynHCFw?utm_source=generator" 
+              width="100%" 
+              height="352" 
+              frameBorder="0" 
+              allowfullscreen="" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy"
+              title="Spotify Embed - Música Exemplo"
+              ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+              <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1h3s1S4m4ZYLfqW7mTCAqh?utm_source=generator" 
+              width="100%" 
+              height="352" 
+              frameBorder="0" 
+              allowfullscreen="" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy"
+              title="Spotify Embed - Música Exemplo"
+              ></iframe>
               </div>
             </SwiperSlide>
             {/* Adicione mais músicas aqui */}
