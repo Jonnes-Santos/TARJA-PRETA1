@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from './supabaseClient'; // Importe o cliente do Supabase
+import { createClient } from '@supabase/supabase-js'; // Importa o Supabase diretamente
 import { Link } from 'react-router-dom';
 // Importações do Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -7,6 +7,11 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+
+// Configuração do Supabase
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL; // Use variáveis de ambiente
+const supabaseKey = process.env.REACT_APP_SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const Home = () => {
   const [noticias, setNoticias] = useState([]);
