@@ -248,7 +248,7 @@ const Home = () => {
               <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
                 <a href="https://open.spotify.com/track/..." target="_blank" rel="noopener noreferrer">
                   <img
-                    src="https://open.spotify.com/intl-pt/track/6m8AgjfI28ER6odzMxmHtR"
+                    src="https://open.spotify.com/intl-pt/track/6m8AgjfI28ER6odzMxmHtR?si=425748e85baf4dee"
                     alt="Capa do Álbum"
                     className="w-full h-64 object-cover"
                   />
