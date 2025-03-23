@@ -238,8 +238,6 @@ const Home = () => {
                 ></iframe>
               </div>
             </SwiperSlide>
-
-            {/* Adicione mais vídeos aqui */}
           </Swiper>
         </div>
       </section>
@@ -276,45 +274,49 @@ const Home = () => {
             </SwiperSlide>
             <SwiperSlide>
               <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-                <iframe style="border-radius:12px" 
-                src="https://open.spotify.com/embed/track/7xvBJ8GAoTK6umIFo4NSPP?utm_source=generator" 
-                width="100%" 
-                height="352"
-                 frameBorder="0" 
-                 allowfullscreen="" 
-                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                 loading="lazy"
-                 title="Spotify Embed - Música Exemplo"
-                 ></iframe>
+                <iframe
+                  style={{ borderRadius: '12px' }}
+                  src="https://open.spotify.com/embed/track/7xvBJ8GAoTK6umIFo4NSPP?utm_source=generator"
+                  width="100%"
+                  height="352"
+                  frameBorder="0"
+                  allowFullScreen
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                  title="Spotify Embed - Música Exemplo"
+                ></iframe>
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-              <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/00r6nDK0negul3eOynHCFw?utm_source=generator" 
-              width="100%" 
-              height="352" 
-              frameBorder="0" 
-              allowfullscreen="" 
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-              loading="lazy"
-              title="Spotify Embed - Música Exemplo"
-              ></iframe>
+                <iframe
+                  style={{ borderRadius: '12px' }}
+                  src="https://open.spotify.com/embed/track/00r6nDK0negul3eOynHCFw?utm_source=generator"
+                  width="100%"
+                  height="352"
+                  frameBorder="0"
+                  allowFullScreen
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                  title="Spotify Embed - Música Exemplo"
+                ></iframe>
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-              <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1h3s1S4m4ZYLfqW7mTCAqh?utm_source=generator" 
-              width="100%" 
-              height="352" 
-              frameBorder="0" 
-              allowfullscreen="" 
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-              loading="lazy"
-              title="Spotify Embed - Música Exemplo"
-              ></iframe>
+                <iframe
+                  style={{ borderRadius: '12px' }}
+                  src="https://open.spotify.com/embed/track/1h3s1S4m4ZYLfqW7mTCAqh?utm_source=generator"
+                  width="100%"
+                  height="352"
+                  frameBorder="0"
+                  allowFullScreen
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                  title="Spotify Embed - Música Exemplo"
+                ></iframe>
               </div>
             </SwiperSlide>
-            {/* Adicione mais músicas aqui */}
           </Swiper>
         </div>
       </section>
