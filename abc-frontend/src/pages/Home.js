@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+// Importações do Swiper
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const Home = () => {
   const [noticias, setNoticias] = useState([]);
@@ -31,10 +37,10 @@ const Home = () => {
   const subDestaques = noticias.slice(1, 3);
 
   // Demais notícias (a partir da quarta notícia)
-  const outrasNoticias = noticias.slice(3, 6); // Ajustado para evitar sobreposição
+  const outrasNoticias = noticias.slice(3, 6);
 
   // Notícias em Destaque (a partir da sétima notícia)
-  const noticiasDestaque = noticias.slice(6, 12); // Pega as notícias de 7 a 12
+  const noticiasDestaque = noticias.slice(6, 12);
 
   // Função para renderizar uma notícia
   const renderNoticia = (noticia, isPrincipal = false, isSubDestaque = false) => (
@@ -123,96 +129,138 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Seção de Notícias em Texto */}
+      {/* Seção de Notícias em Texto (Carrossel) */}
       <section className="noticias-texto py-12 bg-gray-800">
         <div className="container mx-auto px-4 max-w-7xl">
           <h2 className="text-2xl font-bold mb-8">NOTÍCIAS EM DESTAQUE</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <Swiper
+            modules={[Navigation, Pagination]}
+            spaceBetween={20}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+          >
             {noticiasDestaque.map(noticia => (
-              <div key={noticia.id} className="bg-gray-900 rounded-lg shadow-2xl p-6 transform transition-transform hover:scale-105">
-                <Link to={`/noticia/${noticia.id}`} className="hover:text-blue-500">
-                  <h3 className="text-lg md:text-xl font-bold mb-2">{noticia.titulo}</h3>
-                  <p className="text-sm md:text-base text-gray-300">{noticia.resumo}</p>
-                </Link>
-              </div>
+              <SwiperSlide key={noticia.id}>
+                <div className="bg-gray-900 rounded-lg shadow-2xl p-6 transform transition-transform hover:scale-105">
+                  <Link to={`/noticia/${noticia.id}`} className="hover:text-blue-500">
+                    <h3 className="text-lg md:text-xl font-bold mb-2">{noticia.titulo}</h3>
+                    <p className="text-sm md:text-base text-gray-300">{noticia.resumo}</p>
+                  </Link>
+                </div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
       </section>
 
-      {/* Seção de Vídeos do YouTube */}
+      {/* Seção de Vídeos do YouTube (Carrossel) */}
       <section className="videos py-12">
         <div className="container mx-auto px-4 max-w-7xl">
           <h2 className="text-2xl font-bold mb-8">LANÇAMENTOS DO YOUTUBE</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-              <h3 className="text-xl font-bold mb-4 p-4">A286 - Lei da Semeadura</h3>
-              <iframe
-                src="https://www.youtube.com/embed/rTigTqb3G4g"
-                className="w-full h-64"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-              <h3 className="text-xl font-bold mb-4 p-4">A286 Ft Cassino ZL - All in</h3>
-              <iframe
-                src="https://www.youtube.com/embed/ondsAhPadls"
-                className="w-full h-64"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-              <h3 className="text-xl font-bold mb-4 p-4">Mv Bill - Imorrível [Prod. DJ Caique]</h3>
-              <iframe
-                src="https://www.youtube.com/embed/IrLfQQcC8NA"
-                className="w-full h-64"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-              <h3 className="text-xl font-bold mb-4 p-4">Gunplay - Bible On The Dash [Music Video]</h3>
-              <iframe
-                src="https://www.youtube.com/embed/pOys4uYn-b0"
-                className="w-full h-64"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </div>
+          <Swiper
+            modules={[Navigation, Pagination]}
+            spaceBetween={20}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 4 },
+            }}
+          >
+            <SwiperSlide>
+              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <h3 className="text-xl font-bold mb-4 p-4">A286 - Lei da Semeadura</h3>
+                <iframe
+                  src="https://www.youtube.com/embed/rTigTqb3G4g"
+                  className="w-full h-64"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <h3 className="text-xl font-bold mb-4 p-4">A286 Ft Cassino ZL - All in</h3>
+                <iframe
+                  src="https://www.youtube.com/embed/ondsAhPadls"
+                  className="w-full h-64"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <h3 className="text-xl font-bold mb-4 p-4">Mv Bill - Imorrível [Prod. DJ Caique]</h3>
+                <iframe
+                  src="https://www.youtube.com/embed/IrLfQQcC8NA"
+                  className="w-full h-64"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <h3 className="text-xl font-bold mb-4 p-4">Gunplay - Bible On The Dash [Music Video]</h3>
+                <iframe
+                  src="https://www.youtube.com/embed/pOys4uYn-b0"
+                  className="w-full h-64"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </SwiperSlide>
+          </Swiper>
         </div>
       </section>
 
-      {/* Seção de Músicas e Lançamentos do Spotify */}
+      {/* Seção de Músicas e Lançamentos do Spotify (Carrossel) */}
       <section className="musicas py-12 bg-gray-800">
         <div className="container mx-auto px-4 max-w-7xl">
           <h2 className="text-2xl font-bold mb-8">LANÇAMENTOS DO SPOTIFY</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-              <a href="https://open.spotify.com/track/..." target="_blank" rel="noopener noreferrer">
-                <img
-                  src="https://i.scdn.co/image/..."
-                  alt="Capa do Álbum"
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="text-xl font-bold mb-2">Nome da Música</h3>
-                  <p className="text-sm text-gray-300">Artista</p>
-                </div>
-              </a>
-            </div>
+          <Swiper
+            modules={[Navigation, Pagination]}
+            spaceBetween={20}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 4 },
+            }}
+          >
+            <SwiperSlide>
+              <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <a href="https://open.spotify.com/track/..." target="_blank" rel="noopener noreferrer">
+                  <img
+                    src="https://i.scdn.co/image/..."
+                    alt="Capa do Álbum"
+                    className="w-full h-64 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="text-xl font-bold mb-2">Nome da Música</h3>
+                    <p className="text-sm text-gray-300">Artista</p>
+                  </div>
+                </a>
+              </div>
+            </SwiperSlide>
             {/* Adicione mais músicas aqui */}
-          </div>
+          </Swiper>
         </div>
       </section>
 
