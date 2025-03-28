@@ -238,6 +238,32 @@ const Home = () => {
                 ></iframe>
               </div>
             </SwiperSlide>
+            <SwiperSlide>
+              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <h3 className="text-xl font-bold mb-4 p-4">A286 Ft Cria da quebra - Por cada cicatriz (Official Video)</h3>
+                <iframe
+                  src="https://www.youtube.com/embed/oFiGFzO3ZF8"
+                  className="w-full h-64"
+                  title="YouTube video player - Gunplay - Bible On The Dash [Music Video]"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <h3 className="text-xl font-bold mb-4 p-4">A286 - Kalmia Latifolia Part. Lauren (com letra) Prod. Gedson Dias</h3>
+                <iframe
+                  src="https://www.youtube.com/embed/KwouJoUfeSQ"
+                  className="w-full h-64"
+                  title="YouTube video player - Gunplay - Bible On The Dash [Music Video]"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </SwiperSlide>
           </Swiper>
         </div>
       </section>
@@ -315,6 +341,58 @@ const Home = () => {
                   loading="lazy"
                   title="Spotify Embed - Música Exemplo"
                 ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+              <iframe style="border-radius:12px" 
+              src="https://open.spotify.com/embed/track/3YX7vUWNSUGNT8RXzp73OJ?utm_source=generator" 
+              width="100%" 
+              height="352" 
+              frameBorder="0" 
+              allowfullscreen="" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy"
+              ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+              <iframe style="border-radius:12px" 
+              src="https://open.spotify.com/embed/track/7xLy51W65x5O1rttAIRcJc?utm_source=generator" 
+              width="100%" 
+              height="352" 
+              frameBorder="0" 
+              allowfullscreen="" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy"
+              ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+              <iframe style="border-radius:12px" 
+              src="https://open.spotify.com/embed/track/1GtxduaLKhmnM7fl0j6fMC?utm_source=generator" 
+              width="100%" 
+              height="352" 
+              frameBorder="0" 
+              allowfullscreen="" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy"
+              ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+              <iframe style="border-radius:12px" 
+              src="https://open.spotify.com/embed/track/7vEg2d2TgTVKbScK3VANX7?utm_source=generator" 
+              width="100%" 
+              height="352" 
+              frameBorder="0" 
+              allowfullscreen="" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy"
+              ></iframe>
               </div>
             </SwiperSlide>
           </Swiper>
