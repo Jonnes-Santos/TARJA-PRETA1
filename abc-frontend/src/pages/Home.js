@@ -158,118 +158,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Seção de Vídeos do YouTube (Carrossel) */}
-      <section className="videos py-12">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <h2 className="text-2xl font-bold mb-8">AS PESADAS DO YOUTUBE</h2>
-          <Swiper
-            modules={[Navigation, Pagination]}
-            spaceBetween={20}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true }}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 4 },
-            }}
-          >
-            <SwiperSlide>
-              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-                <h3 className="text-xl font-bold mb-4 p-4">A286 - Lei da Semeadura</h3>
-                <iframe
-                  src="https://www.youtube.com/embed/rTigTqb3G4g"
-                  className="w-full h-64"
-                  title="YouTube video player - A286 - Lei da Semeadura"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-                <h3 className="text-xl font-bold mb-4 p-4">A286 Ft Cassino ZL - All in</h3>
-                <iframe
-                  src="https://www.youtube.com/embed/ondsAhPadls"
-                  className="w-full h-64"
-                  title="YouTube video player - A286 Ft Cassino ZL - All in"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-                <h3 className="text-xl font-bold mb-4 p-4">Gunplay - Bible On The Dash [Music Video]</h3>
-                <iframe
-                  src="https://www.youtube.com/embed/pOys4uYn-b0"
-                  className="w-full h-64"
-                  title="YouTube video player - Gunplay - Bible On The Dash [Music Video]"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-                <h3 className="text-xl font-bold mb-4 p-4">Gunplay - Mask On ( Official Video )</h3>
-                <iframe
-                  src="https://www.youtube.com/embed/nQIe9E_MZTA"
-                  className="w-full h-64"
-                  title="YouTube video player - Gunplay - Bible On The Dash [Music Video]"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-                <h3 className="text-xl font-bold mb-4 p-4">Tony Yayo - Bullets Whistle</h3>
-                <iframe
-                  src="https://www.youtube.com/embed/tT-1VflZpaI"
-                  className="w-full h-64"
-                  title="YouTube video player - Gunplay - Bible On The Dash [Music Video]"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-                <h3 className="text-xl font-bold mb-4 p-4">A286 Ft Cria da quebra - Por cada cicatriz (Official Video)</h3>
-                <iframe
-                  src="https://www.youtube.com/embed/oFiGFzO3ZF8"
-                  className="w-full h-64"
-                  title="YouTube video player - Gunplay - Bible On The Dash [Music Video]"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-                <h3 className="text-xl font-bold mb-4 p-4">A286 - Kalmia Latifolia Part. Lauren (com letra) Prod. Gedson Dias</h3>
-                <iframe
-                  src="https://www.youtube.com/embed/KwouJoUfeSQ"
-                  className="w-full h-64"
-                  title="YouTube video player - Gunplay - Bible On The Dash [Music Video]"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </SwiperSlide>
-          </Swiper>
-        </div>
-      </section>
-
-      {/* Seção de Músicas e Lançamentos do Spotify (Carrossel) */}
-      <section className="musicas py-12 bg-gray-800">
+            {/* Seção de Músicas e Lançamentos do Spotify (Carrossel) */}
+            <section className="musicas py-12 bg-gray-800">
         <div className="container mx-auto px-4 max-w-7xl">
           <h2 className="text-2xl font-bold mb-8">FAVORITAS DO SPOTIFY</h2>
           <Swiper
@@ -294,7 +184,7 @@ const Home = () => {
                   allowFullScreen
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"
-                  title="Spotify Embed - Música Exemplo"
+                  title="Spotify - Música 1"
                 ></iframe>
               </div>
             </SwiperSlide>
@@ -309,7 +199,7 @@ const Home = () => {
                   allowFullScreen
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"
-                  title="Spotify Embed - Música Exemplo"
+                  title="Spotify - Música 2"
                 ></iframe>
               </div>
             </SwiperSlide>
@@ -324,7 +214,7 @@ const Home = () => {
                   allowFullScreen
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"
-                  title="Spotify Embed - Música Exemplo"
+                  title="Spotify - Música 3"
                 ></iframe>
               </div>
             </SwiperSlide>
@@ -339,72 +229,70 @@ const Home = () => {
                   allowFullScreen
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"
-                  title="Spotify Embed - Música Exemplo"
+                  title="Spotify - Música 4"
                 ></iframe>
               </div>
             </SwiperSlide>
-            {/* 5º iframe do Spotify */}
-<SwiperSlide>
-  <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-    <iframe 
-      style={{ borderRadius: '12px' }} 
-      src="https://open.spotify.com/embed/track/3YX7vUWNSUGNT8RXzp73OJ?utm_source=generator" 
-      width="100%" 
-      height="352" 
-      frameBorder="0" 
-      allowFullScreen
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-      loading="lazy"
-    ></iframe>
-  </div>
-</SwiperSlide>
-
-{/* 6º iframe do Spotify */}
-<SwiperSlide>
-  <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-    <iframe 
-      style={{ borderRadius: '12px' }} 
-      src="https://open.spotify.com/embed/track/7xLy51W65x5O1rttAIRcJc?utm_source=generator" 
-      width="100%" 
-      height="352" 
-      frameBorder="0" 
-      allowFullScreen
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-      loading="lazy"
-    ></iframe>
-  </div>
-</SwiperSlide>
-            {/* 7º iframe (corrigido) */}
-<SwiperSlide>
-  <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-    <iframe 
-      style={{ borderRadius: '12px' }}
-      src="https://open.spotify.com/embed/track/1GtxduaLKhmnM7fl0j6fMC?utm_source=generator" 
-      width="100%" 
-      height="352" 
-      frameBorder="0" 
-      allowFullScreen
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-      loading="lazy"
-    ></iframe>
-  </div>
-</SwiperSlide>
-
-{/* 8º iframe (corrigido) */}
-<SwiperSlide>
-  <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-    <iframe 
-      style={{ borderRadius: '12px' }}
-      src="https://open.spotify.com/embed/track/7vEg2d2TgTVKbScK3VANX7?utm_source=generator" 
-      width="100%" 
-      height="352" 
-      frameBorder="0" 
-      allowFullScreen
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-      loading="lazy"
-    ></iframe>
-  </div>
-</SwiperSlide>
+            <SwiperSlide>
+              <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <iframe 
+                  style={{ borderRadius: '12px' }} 
+                  src="https://open.spotify.com/embed/track/3YX7vUWNSUGNT8RXzp73OJ?utm_source=generator" 
+                  width="100%" 
+                  height="352" 
+                  frameBorder="0" 
+                  allowFullScreen
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                  loading="lazy"
+                  title="Spotify - Música 5"
+                ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <iframe 
+                  style={{ borderRadius: '12px' }} 
+                  src="https://open.spotify.com/embed/track/7xLy51W65x5O1rttAIRcJc?utm_source=generator" 
+                  width="100%" 
+                  height="352" 
+                  frameBorder="0" 
+                  allowFullScreen
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                  loading="lazy"
+                  title="Spotify - Música 6"
+                ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <iframe 
+                  style={{ borderRadius: '12px' }}
+                  src="https://open.spotify.com/embed/track/1GtxduaLKhmnM7fl0j6fMC?utm_source=generator" 
+                  width="100%" 
+                  height="352" 
+                  frameBorder="0" 
+                  allowFullScreen
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                  loading="lazy"
+                  title="Spotify - Música 7"
+                ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <iframe 
+                  style={{ borderRadius: '12px' }}
+                  src="https://open.spotify.com/embed/track/7vEg2d2TgTVKbScK3VANX7?utm_source=generator" 
+                  width="100%" 
+                  height="352" 
+                  frameBorder="0" 
+                  allowFullScreen
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                  loading="lazy"
+                  title="Spotify - Música 8"
+                ></iframe>
+              </div>
+            </SwiperSlide>
           </Swiper>
         </div>
       </section>
