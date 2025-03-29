@@ -345,7 +345,8 @@ const Home = () => {
             </SwiperSlide>
             <SwiperSlide>
               <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-              <iframe style="border-radius:12px" 
+              <iframe 
+              style={{ borderRadius: '12px' }} 
               src="https://open.spotify.com/embed/track/3YX7vUWNSUGNT8RXzp73OJ?utm_source=generator" 
               width="100%" 
               height="352" 
@@ -358,7 +359,8 @@ const Home = () => {
             </SwiperSlide>
             <SwiperSlide>
               <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-              <iframe style="border-radius:12px" 
+              <iframe 
+              style={{ borderRadius: '12px' }} 
               src="https://open.spotify.com/embed/track/7xLy51W65x5O1rttAIRcJc?utm_source=generator" 
               width="100%" 
               height="352" 
@@ -369,32 +371,37 @@ const Home = () => {
               ></iframe>
               </div>
             </SwiperSlide>
-            <SwiperSlide>
-              <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-              <iframe style="border-radius:12px" 
-              src="https://open.spotify.com/embed/track/1GtxduaLKhmnM7fl0j6fMC?utm_source=generator" 
-              width="100%" 
-              height="352" 
-              frameBorder="0" 
-              allowfullscreen="" 
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-              loading="lazy"
-              ></iframe>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-              <iframe style="border-radius:12px" 
-              src="https://open.spotify.com/embed/track/7vEg2d2TgTVKbScK3VANX7?utm_source=generator" 
-              width="100%" 
-              height="352" 
-              frameBorder="0" 
-              allowfullscreen="" 
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-              loading="lazy"
-              ></iframe>
-              </div>
-            </SwiperSlide>
+            {/* 7º iframe (corrigido) */}
+<SwiperSlide>
+  <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+    <iframe 
+      style={{ borderRadius: '12px' }}
+      src="https://open.spotify.com/embed/track/1GtxduaLKhmnM7fl0j6fMC?utm_source=generator" 
+      width="100%" 
+      height="352" 
+      frameBorder="0" 
+      allowFullScreen
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+      loading="lazy"
+    ></iframe>
+  </div>
+</SwiperSlide>
+
+{/* 8º iframe (corrigido) */}
+<SwiperSlide>
+  <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+    <iframe 
+      style={{ borderRadius: '12px' }}
+      src="https://open.spotify.com/embed/track/7vEg2d2TgTVKbScK3VANX7?utm_source=generator" 
+      width="100%" 
+      height="352" 
+      frameBorder="0" 
+      allowFullScreen
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+      loading="lazy"
+    ></iframe>
+  </div>
+</SwiperSlide>
           </Swiper>
         </div>
       </section>
