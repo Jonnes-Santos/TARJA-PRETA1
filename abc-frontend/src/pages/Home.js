@@ -158,6 +158,116 @@ const Home = () => {
         </div>
       </section>
 
+            {/* Seção de Vídeos do YouTube (Carrossel) */}
+            <section className="videos py-12">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <h2 className="text-2xl font-bold mb-8">AS PESADAS DO YOUTUBE</h2>
+          <Swiper
+            modules={[Navigation, Pagination]}
+            spaceBetween={20}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 4 },
+            }}
+          >
+            <SwiperSlide>
+              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <h3 className="text-xl font-bold mb-4 p-4">A286 - Lei da Semeadura</h3>
+                <iframe
+                  src="https://www.youtube.com/embed/rTigTqb3G4g"
+                  className="w-full h-64"
+                  title="YouTube video player - A286 - Lei da Semeadura"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <h3 className="text-xl font-bold mb-4 p-4">A286 Ft Cassino ZL - All in</h3>
+                <iframe
+                  src="https://www.youtube.com/embed/ondsAhPadls"
+                  className="w-full h-64"
+                  title="YouTube video player - A286 Ft Cassino ZL - All in"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <h3 className="text-xl font-bold mb-4 p-4">Gunplay - Bible On The Dash [Music Video]</h3>
+                <iframe
+                  src="https://www.youtube.com/embed/pOys4uYn-b0"
+                  className="w-full h-64"
+                  title="YouTube video player - Gunplay - Bible On The Dash [Music Video]"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <h3 className="text-xl font-bold mb-4 p-4">Gunplay - Mask On ( Official Video )</h3>
+                <iframe
+                  src="https://www.youtube.com/embed/nQIe9E_MZTA"
+                  className="w-full h-64"
+                  title="YouTube video player - Gunplay - Mask On (Official Video)"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <h3 className="text-xl font-bold mb-4 p-4">Tony Yayo - Bullets Whistle</h3>
+                <iframe
+                  src="https://www.youtube.com/embed/tT-1VflZpaI"
+                  className="w-full h-64"
+                  title="YouTube video player - Tony Yayo - Bullets Whistle"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <h3 className="text-xl font-bold mb-4 p-4">A286 Ft Cria da quebra - Por cada cicatriz (Official Video)</h3>
+                <iframe
+                  src="https://www.youtube.com/embed/oFiGFzO3ZF8"
+                  className="w-full h-64"
+                  title="YouTube video player - A286 Ft Cria da quebra - Por cada cicatriz"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <h3 className="text-xl font-bold mb-4 p-4">A286 - Kalmia Latifolia Part. Lauren (com letra) Prod. Gedson Dias</h3>
+                <iframe
+                  src="https://www.youtube.com/embed/KwouJoUfeSQ"
+                  className="w-full h-64"
+                  title="YouTube video player - A286 - Kalmia Latifolia"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      </section>
+
             {/* Seção de Músicas e Lançamentos do Spotify (Carrossel) */}
             <section className="musicas py-12 bg-gray-800">
         <div className="container mx-auto px-4 max-w-7xl">
