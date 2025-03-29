@@ -343,34 +343,37 @@ const Home = () => {
                 ></iframe>
               </div>
             </SwiperSlide>
-            <SwiperSlide>
-              <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-              <iframe 
-              style={{ borderRadius: '12px' }} 
-              src="https://open.spotify.com/embed/track/3YX7vUWNSUGNT8RXzp73OJ?utm_source=generator" 
-              width="100%" 
-              height="352" 
-              frameBorder="0" 
-              allowfullscreen="" 
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-              loading="lazy"
-              ></iframe>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
-              <iframe 
-              style={{ borderRadius: '12px' }} 
-              src="https://open.spotify.com/embed/track/7xLy51W65x5O1rttAIRcJc?utm_source=generator" 
-              width="100%" 
-              height="352" 
-              frameBorder="0" 
-              allowfullscreen="" 
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-              loading="lazy"
-              ></iframe>
-              </div>
-            </SwiperSlide>
+            {/* 5º iframe do Spotify */}
+<SwiperSlide>
+  <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+    <iframe 
+      style={{ borderRadius: '12px' }} 
+      src="https://open.spotify.com/embed/track/3YX7vUWNSUGNT8RXzp73OJ?utm_source=generator" 
+      width="100%" 
+      height="352" 
+      frameBorder="0" 
+      allowFullScreen
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+      loading="lazy"
+    ></iframe>
+  </div>
+</SwiperSlide>
+
+{/* 6º iframe do Spotify */}
+<SwiperSlide>
+  <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+    <iframe 
+      style={{ borderRadius: '12px' }} 
+      src="https://open.spotify.com/embed/track/7xLy51W65x5O1rttAIRcJc?utm_source=generator" 
+      width="100%" 
+      height="352" 
+      frameBorder="0" 
+      allowFullScreen
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+      loading="lazy"
+    ></iframe>
+  </div>
+</SwiperSlide>
             {/* 7º iframe (corrigido) */}
 <SwiperSlide>
   <div className="musica-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
