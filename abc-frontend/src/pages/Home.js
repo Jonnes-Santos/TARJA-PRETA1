@@ -264,6 +264,19 @@ const Home = () => {
                 ></iframe>
               </div>
             </SwiperSlide>
+            <SwiperSlide>
+              <div className="video-item bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105">
+                <h3 className="text-xl font-bold mb-4 p-4">Stefanie - Desconforto (Prod. Daniel Ganjaman & Grou)</h3>
+                <iframe
+                  src="https://www.youtube.com/embed/46xNOuchMD0"
+                  className="w-full h-64"
+                  title="YouTube video player - Stefanie - Desconforto"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </SwiperSlide>
           </Swiper>
         </div>
       </section>
