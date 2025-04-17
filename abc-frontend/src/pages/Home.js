@@ -52,6 +52,7 @@ const Home = () => {
         })
         .finally(() => setLoading(false));
     }, []);
+  };  
 
   // Notícia principal (primeira notícia da lista)
   const noticiaPrincipal = noticias.length > 0 ? noticias[0] : null;
