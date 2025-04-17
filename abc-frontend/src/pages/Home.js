@@ -13,37 +13,45 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Buscar notícias + Inicializar GA4
-  useEffect(() => {
-    // === Configuração do Google Analytics ===
-    if (!window.dataLayer) {
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-VPDK4JDYNM'); // Substitua pelo seu ID do GA4
-      
-      // Carrega o script dinamicamente
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-VPDK4JDYNM';
-      document.head.appendChild(script);
-    }
-
-    // === Sua requisição original ===
-    axios.get('/.netlify/functions/getNoticias')
-      .then(response => {
-        if (response.data && Array.isArray(response.data)) {
-          setNoticias(response.data);
-        } else {
-          setError("Dados inválidos recebidos da API.");
+  const Home = () => {
+    const [noticias, setNoticias] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+  
+    // Buscar notícias + Inicializar GA4
+    useEffect(() => {
+      // === Configuração do Google Analytics ===
+      // Verifica se estamos no navegador (client-side)
+      if (typeof window !== 'undefined') {
+        if (!window.dataLayer) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', 'G-VPDK4JDYNM');
+          
+          // Carrega o script dinamicamente
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-VPDK4JDYNM';
+          document.head.appendChild(script);
         }
-      })
-      .catch(error => {
-        console.error("Erro ao buscar notícias:", error);
-        setError("Erro ao carregar notícias. Tente novamente mais tarde.");
-      })
-      .finally(() => setLoading(false));
-  }, []); // <- Garante que roda apenas uma vez
+      }
+  
+      // === Sua requisição original ===
+      axios.get('/.netlify/functions/getNoticias')
+        .then(response => {
+          if (response.data && Array.isArray(response.data)) {
+            setNoticias(response.data);
+          } else {
+            setError("Dados inválidos recebidos da API.");
+          }
+        })
+        .catch(error => {
+          console.error("Erro ao buscar notícias:", error);
+          setError("Erro ao carregar notícias. Tente novamente mais tarde.");
+        })
+        .finally(() => setLoading(false));
+    }, []);
 
   // Notícia principal (primeira notícia da lista)
   const noticiaPrincipal = noticias.length > 0 ? noticias[0] : null;
