@@ -1,58 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-// Importações do Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+/* global dataLayer */
+
 const Home = () => {
   const [noticias, setNoticias] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const Home = () => {
-    const [noticias, setNoticias] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-  
-    // Buscar notícias + Inicializar GA4
-    useEffect(() => {
-      // === Configuração do Google Analytics ===
-      // Verifica se estamos no navegador (client-side)
-      if (typeof window !== 'undefined') {
-        if (!window.dataLayer) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag() { dataLayer.push(arguments); }
-          gtag('js', new Date());
-          gtag('config', 'G-VPDK4JDYNM');
-          
-          // Carrega o script dinamicamente
-          const script = document.createElement('script');
-          script.async = true;
-          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-VPDK4JDYNM';
-          document.head.appendChild(script);
+  // BUSCAR NOTÍCIAS + INICIALIZAR GA4 (ALTERAÇÃO PRINCIPAL)
+  useEffect(() => {
+    // Configuração do Google Analytics
+    if (typeof window !== 'undefined') {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function() { dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', 'G-VPDK4JDYNM');
+
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-VPDK4JDYNM';
+      document.head.appendChild(script);
+    }
+
+    // Sua requisição original
+    axios.get('/.netlify/functions/getNoticias')
+      .then(response => {
+        if (response.data && Array.isArray(response.data)) {
+          setNoticias(response.data);
+        } else {
+          setError("Dados inválidos recebidos da API.");
         }
-      }
-  
-      // === Sua requisição original ===
-      axios.get('/.netlify/functions/getNoticias')
-        .then(response => {
-          if (response.data && Array.isArray(response.data)) {
-            setNoticias(response.data);
-          } else {
-            setError("Dados inválidos recebidos da API.");
-          }
-        })
-        .catch(error => {
-          console.error("Erro ao buscar notícias:", error);
-          setError("Erro ao carregar notícias. Tente novamente mais tarde.");
-        })
-        .finally(() => setLoading(false));
-    }, []);
-  };  
+      })
+      .catch(error => {
+        console.error("Erro ao buscar notícias:", error);
+        setError("Erro ao carregar notícias. Tente novamente mais tarde.");
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  // Renderização condicional
+  if (loading) {
+    return <div className="min-h-screen bg-black text-white flex justify-center items-center">Por favor, aguarde. Carregando...</div>;
+  }
+
+  if (error) {
+    return <div className="min-h-screen bg-black text-white flex justify-center items-center">{error}</div>;
+  }
 
   // Notícia principal (primeira notícia da lista)
   const noticiaPrincipal = noticias.length > 0 ? noticias[0] : null;
@@ -66,7 +66,7 @@ const Home = () => {
   // Notícias em Destaque (a partir da sétima notícia)
   const noticiasDestaque = noticias.slice(9, 24);
 
-  // Função para renderizar uma notícia
+  // Função para renderizar uma notícia (MANTIDO ORIGINAL)
   const renderNoticia = (noticia, isPrincipal = false, isSubDestaque = false) => (
     <article className={`${isPrincipal || isSubDestaque ? 'noticia-destaque' : 'noticia-comum'} bg-gray-900 rounded-lg shadow-2xl overflow-hidden transform transition-transform hover:scale-105`}>
       <div className={`relative ${isPrincipal || isSubDestaque ? 'h-96' : 'h-64'} overflow-hidden`}>
