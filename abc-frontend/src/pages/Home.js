@@ -13,8 +13,23 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Buscar notícias
+  // Buscar notícias + Inicializar GA4
   useEffect(() => {
+    // === Configuração do Google Analytics ===
+    if (!window.dataLayer) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-VPDK4JDYNM'); // Substitua pelo seu ID do GA4
+      
+      // Carrega o script dinamicamente
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-VPDK4JDYNM';
+      document.head.appendChild(script);
+    }
+
+    // === Sua requisição original ===
     axios.get('/.netlify/functions/getNoticias')
       .then(response => {
         if (response.data && Array.isArray(response.data)) {
@@ -28,7 +43,7 @@ const Home = () => {
         setError("Erro ao carregar notícias. Tente novamente mais tarde.");
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, []); // <- Garante que roda apenas uma vez
 
   // Notícia principal (primeira notícia da lista)
   const noticiaPrincipal = noticias.length > 0 ? noticias[0] : null;
